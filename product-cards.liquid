@@ -1,0 +1,29 @@
+<div id="product-list" class="flex flex-row flex-wrap justify-center gap-4 overflow-hidden overflow-x-auto snap-x snap-mandatory md:flex-nowrap md:justify-normal lg:min-h-[20rem]">
+    {% for product in products %}
+        <div class="product" style="display: flex;">
+            <div class="product_item snap-always snap-center relative">
+                <div class="h-44 w-44 sm:h-64 sm:w-64 rounded-md relative shadow-md">
+                    <img class="product_image object-cover h-full w-full rounded-md" src="{{ product.featured_image | img_url: '600x600' }}" alt="{{ product.title }}">
+                    {% if product.tags contains 'Best Seller' %}
+                        <span class="absolute top-2 left-2 text-[8px] sm:text-[12px] font-medium bg-white text-black px-2 py-1 rounded-full uppercase drop-shadow-md">Best Seller</span>
+                    {% endif %}
+                    {% if product.compare_at_price > product.price %}
+                        <span class="absolute top-2 right-2 text-[8px] sm:text-[12px] font-medium bg-green-800 text-white px-2 py-1 rounded-full uppercase drop-shadow-md">
+                            Save {{ 'now_save' | t: saved: product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round }}% Off
+                        </span>
+                    {% endif %}
+                </div>
+                <div class="h-24 pt-4 px-2">
+                    <h3 class="text-sm uppercase font-semibold">{{ product.title }}</h3>
+                    <p><span class="text-sm">★★★★ {{ product.reviews_count }} reviews</span></p>
+                    <p><span class="text-sm">
+                        <span class="text-red-400">{{ product.price | money }}</span>
+                        {% if product.compare_at_price > product.price %}
+                            <span class="pl-2 line-through">{{ product.compare_at_price | money }}</span>
+                        {% endif %}
+                    </span></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

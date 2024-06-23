@@ -249,4 +249,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     filterProducts();
+
 });
