@@ -1,0 +1,52 @@
+/* Standard CSS */
+
+/* ===== Scrollbar CSS ===== */
+/* Styling for Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 4px; /* Default width */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Default color */
+  border-radius: 10px; /* Roundness */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  width: 6px; /* Width on hover */
+  background-color: #555; /* Color on hover */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background of the scrollbar track */
+  border-radius: 10px;
+}
+
+/* Styling for Firefox */
+html {
+  scrollbar-width: thin; /* Default width */
+  scrollbar-color: #888 #f1f1f1; /* Thumb and track color */
+}
+
+html:hover {
+  scrollbar-width: 6px; /* Width on hover */
+}
+
+/* Styling for Internet Explorer and Edge */
+body {
+  -ms-overflow-style: -ms-autohiding-scrollbar; /* Hides scrollbar when not in use */
+}
+
+.product_image:hover {
+  transition: transform 0.1s ease;
+}
+
+@media (max-width: 768px) {
+  #product-list .product:nth-child(n + 5) {
+    display: none;
+  }
+
+  /* Show the "Show More" button initially on mobile */
+  #show-more-btn {
+    display: block;
+  }
+}
